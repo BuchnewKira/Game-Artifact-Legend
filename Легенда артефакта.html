@@ -1,0 +1,385 @@
+﻿<link rel="stylesheet" href="style.css">
+<title>Легенда артефакта</title>
+<body>
+<div class="container1"><img src="knight.png" alt="Логотип"></div>
+<div id="my-div"><div class="ornament">Легенда артефакта</div>
+    <button id="my-button" onclick="document.getElementById('player').play()">ᛃ начать игру ᛃ</button></div>
+ <audio id="player" loop src="musi.mp3"></audio>
+</body>
+<script>
+let playerHealth = 10;
+let playerGold = 0;
+let playerLevel = 1;
+let isGameOver = false;
+let numberDefeatedEnemies = 0;
+const maxPlayerLevel = 5;
+
+function createButtonAndTextField() {
+    const myText = document.createElement('a');
+    const textNode = document.createTextNode('Здравствуй, странник. Как тебя зовут?');
+    myText.appendChild(textNode);
+    myText.className = 'type';
+
+    // Создаем новый элемент кнопки
+    const myButton = document.createElement('button');
+    myButton.textContent = 'ᛃ Продолжить ᛃ';
+    myButton.className = 'btn';
+
+    function l() {
+        My();
+    }
+    myButton.addEventListener('click', l);
+
+    // Создаем новый элемент текстового поля
+    const myTextField = document.createElement('input');
+    myTextField.type = 'text';
+    myTextField.placeholder = 'Обратной дороги не будет...';
+    myTextField.id = 'my-text-field';
+    myTextField.addEventListener('input', function(e) {
+        const inputText = e.target.value;
+        const regex = /^[a-zA-Zа-яА-Я]+$/; // Регулярное выражение для буквенных символов
+        if (!regex.test(inputText)) {
+            e.target.value = inputText.replace(/[^a-zA-Zа-яА-Я]+/g, ''); // Заменяем все не-буквенные символы на пустую строку
+        }
+    });
+
+    // Получаем элемент div
+    const myDiv = document.getElementById('my-div');
+
+    // Добавляем кнопку и текстовое поле в элемент div
+    myDiv.appendChild(myText);
+    myDiv.appendChild(myTextField);
+    myDiv.appendChild(myButton);
+
+    function My() {
+        const fieldValue = myTextField.value;
+        if (fieldValue === '') {
+            return; // Do nothing if the text field is empty
+        }
+        const myText1 = document.createElement('p');
+        const textNode = document.createTextNode('Давным-давно в мире, окутанном тьмой и ужасом, жил молодой воин по имени ' + fieldValue + '. Он отправился в долгое и опасное путешествие, чтобы найти древний артефакт, который, как говорят легенды, может уничтожить всех злых демонов и вернуть мир к прежнему состоянию. ' + fieldValue + ' был готов ко всем испытаниям, которые ему предстояли на его пути. Его путь был долгим и полным опасностей: он встретил множество врагов, которые хотели остановить его в поисках артефакта. ' + fieldValue + ' был настолько смелым и умелым воином, что справлялся с каждым врагом на своём пути. Однажды он встретил злого короля, который хранил артефакт. В битве с королём, ' + fieldValue + ' победил и вернул артефакт, и теперь он должен использовать его, чтобы уничтожить всех злых демонов и вернуть мир к прежнему состоянию. Теперь ' + fieldValue + ' отправляется в последнее путешествие, чтобы уничтожить демонов и спасти мир. Его здоровье и богатство помогут ему в этом путешествии, но ему также придётся принимать трудные решения и сражаться в жестоких битвах. Сможет ли ' + fieldValue + ' победить всех демонов и вернуть мир к прежнему состоянию? Только время покажет.');
+        myText1.className = 'types';
+        const myButton1 = document.createElement('button');
+        myButton1.textContent = 'ᛃ Продолжить ᛃ';
+        myButton1.className = 'btn_1';
+
+        function Select() {
+            const myText2 = document.createElement('p');
+            const textNode = document.createTextNode('Вы невероятно смелый путник, желаю незабываемых приключений...');
+            myText2.className = 'types-2';
+            const myButton2 = document.createElement('button');
+            myButton2.textContent = 'ᛃ Продолжить ᛃ';
+
+            function r() {
+                myButton2.remove();
+                myText2.remove();
+                info();
+
+                function info() {
+                    const myText25 = document.createElement('p');
+                    const textNode = document.createTextNode(`Ваше здоровье: ` + playerHealth + `. Ваше золото: ` + playerGold + `.`);
+                    myText25.appendChild(textNode);
+                    myText25.className = 'types-2';
+                    const myButton25 = document.createElement('button');
+                    myButton25.textContent = 'ᛃ Продолжить ᛃ';
+                    myButton25.className = 'btn';
+
+                    function j() {
+                        myButton25.remove();
+                        myText25.remove();
+                        gameProcess();
+
+                        function gameProcess() {
+                            if (playerLevel != maxPlayerLevel) {
+                                const myText5 = document.createElement('p');
+                                const textNode = document.createTextNode(`Выберите действие: исследовать мир(1), вылечиться(2), выйти(3)?`);
+                                myText5.appendChild(textNode);
+                                myText5.className = 'types-2';
+                                const myTextField5 = document.createElement('input');
+                                myTextField5.type = 'text';
+                                myTextField5.id = 'choice';
+                                const myButton5 = document.createElement('button');
+                                myButton5.textContent = 'ᛃ Продолжить ᛃ';
+                                myButton5.className = 'btn';
+
+                                function KL() {
+                                    let choice = myTextField5.value;
+                                    switch (choice) {
+                                        case "1":
+                                            battle();
+
+                                            function battle() {
+                                                let enemyHealth = getRandomNumber(50, 100);
+                                                const myText12 = document.createElement('p');
+                                                const textNode = document.createTextNode(`Вы сталкиваетесь с врагом, у которого ` + enemyHealth + ` здоровья!`);
+                                                myText12.appendChild(textNode);
+                                                myText12.className = 'types-2';
+                                                const myButton12 = document.createElement('button');
+                                                myButton12.textContent = 'ᛃ Продолжить ᛃ';
+                                                myButton12.className = 'btn';
+
+                                                function battle_1() {
+                                                    let playerDamage = getRandomNumber(35, 45);
+                                                    enemyHealth -= playerDamage;
+                                                    if (enemyHealth <= 0) {
+                                                        let goldEarned = getRandomNumber(5, 10) * playerLevel;
+                                                        playerGold += goldEarned;
+                                                        const myText15 = document.createElement('p');
+                                                        const textNode = document.createTextNode(`Вы нанесли врагу ` + playerDamage + ` урона! Враг побежден! Вы заработали ` + goldEarned + ` золота!`);
+                                                        myText15.appendChild(textNode);
+                                                        myText15.className = 'types-2';
+                                                        const myButton16 = document.createElement('button');
+                                                        myButton16.textContent = 'ᛃ Продолжить ᛃ';
+                                                        myButton16.className = 'btn';
+
+                                                        function levelUp() {
+                                                            myButton16.remove();
+                                                            myText15.remove();
+                                                            let experienceNeeded = playerLevel * 2;
+                                                            const gold = getRandomNumber(5, 10);
+                                                            playerGold += gold;
+                                                            playerLevel++;
+                                                            const myText16 = document.createElement('p');
+                                                            const textNode = document.createTextNode(`Поздравляем! Вы достигли ` + playerLevel + ` уровня. Бонус за уровень ` + gold + ` золота!`);
+                                                            myText16.appendChild(textNode);
+                                                            myText16.className = 'types-2';
+                                                            const myButton17 = document.createElement('button');
+                                                            myButton17.textContent = 'ᛃ Продолжить ᛃ';
+                                                            myButton17.className = 'btn';
+
+                                                            function s() {
+                                                                myButton17.remove();
+                                                                myText16.remove();
+                                                                info();
+                                                            }
+                                                            myButton17.addEventListener('click', s);
+                                                            const myDiv = document.getElementById('my-div');
+                                                            myDiv.appendChild(myText16);
+                                                            myDiv.appendChild(myButton17);
+                                                        }
+                                                        myButton16.addEventListener('click', levelUp);
+                                                        const myDiv = document.getElementById('my-div');
+                                                        myDiv.appendChild(myText15);
+                                                        myDiv.appendChild(myButton16);
+                                                    } else {
+                                                        const myText13 = document.createElement('p');
+                                                        const textNode = document.createTextNode(`Вы нанесли врагу ` + playerDamage + ` урона! Здоровье врага: ` + enemyHealth + `, Ваше здоровье: ` + playerHealth);
+                                                        myText13.appendChild(textNode);
+                                                        myText13.className = 'types-2';
+                                                        const myButton13 = document.createElement('button');
+                                                        myButton13.textContent = 'ᛃ Продолжить ᛃ';
+                                                        myButton13.className = 'btn';
+
+                                                        function battle_2() {
+                                                            myButton13.remove();
+                                                            myText13.remove();
+                                                            let enemyAttack = getRandomNumber(35, 45);
+                                                            playerHealth -= enemyAttack;
+                                                            if (playerHealth <= 0) {
+                                                                const myText33 = document.createElement('p');
+                                                                const textNode = document.createTextNode(`Враг наносит вам ` + enemyAttack + ` урона! Вы побеждены, спасибо за игру, ` + fieldValue + `!`);
+                                                                myText33.appendChild(textNode);
+                                                                myText33.className = 'types-2';
+                                                                const myButton33 = document.createElement('button');
+                                                                myButton33.textContent = 'ᛃ Выход ᛃ';
+                                                                myButton33.className = 'btn_3';
+
+                                                                function p() {
+                                                                    window.close();
+                                                                }
+                                                                myButton33.addEventListener('click', p);
+                                                                const myDiv = document.getElementById('my-div');
+                                                                myDiv.appendChild(myText33);
+                                                                myDiv.appendChild(myButton33);
+                                                            } else {
+                                                                const myText14 = document.createElement('p');
+                                                                const textNode = document.createTextNode(`Враг наносит вам ` + enemyAttack + ` урона! Здоровье врага:  ` + enemyHealth + `, Ваше здоровье: ` + playerHealth);
+                                                                myText14.appendChild(textNode);
+                                                                myText14.className = 'types-2';
+                                                                const myButton14 = document.createElement('button');
+                                                                myButton14.textContent = 'ᛃ Продолжить ᛃ';
+                                                                myButton14.className = 'btn';
+
+                                                                function battle_3() {
+                                                                    myButton14.remove();
+                                                                    myText14.remove();
+                                                                    battle_1();
+                                                                }
+                                                                myButton14.addEventListener('click', battle_3);
+                                                                const myDiv = document.getElementById('my-div');
+                                                                myDiv.appendChild(myText14);
+                                                                myDiv.appendChild(myButton14);
+                                                            }
+                                                        }
+                                                        myButton13.addEventListener('click', battle_2);
+                                                        const myDiv = document.getElementById('my-div');
+                                                        myDiv.appendChild(myText13);
+                                                        myDiv.appendChild(myButton13);
+                                                        myButton12.remove();
+                                                        myText12.remove();
+                                                    }
+                                                }
+                                                myButton12.addEventListener('click', battle_1);
+                                                const myDiv = document.getElementById('my-div');
+                                                myDiv.appendChild(myText12);
+                                                myDiv.appendChild(myButton12);
+                                            }
+                                            myButton5.remove();
+                                            myText5.remove();
+                                            myTextField5.remove();
+                                            break;
+                                        case "2":
+                                            myButton5.remove();
+                                            myText5.remove();
+                                            myTextField5.remove();
+                                            health();
+
+                                            function health() {
+                                                let restCost = playerLevel * 10;
+                                                const myText20 = document.createElement('p');
+                                                const textNode = document.createTextNode(`Стоимость лечения: ` + restCost + `. Ваше золото: ` + playerGold + `.`);
+                                                myText20.appendChild(textNode);
+                                                myText20.className = 'types-2';
+                                                const myButton20 = document.createElement('button');
+                                                myButton20.textContent = 'ᛃ Продолжить ᛃ';
+                                                myButton20.className = 'btn';
+
+                                                function health_1() {
+                                                    if (playerGold >= restCost) {
+                                                        myText20.remove();
+                                                        myButton20.remove();
+                                                        playerHealth = 100;
+                                                        playerGold -= restCost;
+                                                        const myText22 = document.createElement('p');
+                                                        const textNode = document.createTextNode(`Вы полностью восстановили здоровье!`);
+                                                        myText22.appendChild(textNode);
+                                                        myText22.className = 'types-2';
+                                                        const myButton22 = document.createElement('button');
+                                                        myButton22.textContent = 'ᛃ Продолжить ᛃ';
+                                                        myButton22.className = 'btn';
+
+                                                        function w() {
+                                                            myButton22.remove();
+                                                            myText22.remove();
+                                                            info();
+                                                        }
+                                                        myButton22.addEventListener('click', w);
+                                                        const myDiv = document.getElementById('my-div');
+                                                        myDiv.appendChild(myText22);
+                                                        myDiv.appendChild(myButton22);
+                                                    } else {
+                                                        myText20.remove();
+                                                        myButton20.remove();
+                                                        const myText23 = document.createElement('p');
+                                                        const textNode = document.createTextNode(`У вас недостаточно золота, чтобы вылечиться.`);
+                                                        myText23.appendChild(textNode);
+                                                        myText23.className = 'types-2';
+                                                        const myButton23 = document.createElement('button');
+                                                        myButton23.textContent = 'ᛃ Продолжить ᛃ';
+                                                        myButton23.className = 'btn';
+
+                                                        function q() {
+                                                            myButton23.remove();
+                                                            myText23.remove();
+                                                            gameProcess();
+                                                        }
+                                                        myButton23.addEventListener('click', q);
+                                                        const myDiv = document.getElementById('my-div');
+                                                        myDiv.appendChild(myText23);
+                                                        myDiv.appendChild(myButton23);
+                                                    }
+                                                }
+                                                myButton20.addEventListener('click', health_1);
+                                                const myDiv = document.getElementById('my-div');
+                                                myDiv.appendChild(myText20);
+                                                myDiv.appendChild(myButton20);
+                                            }
+                                            break;
+                                        case "3":
+                                            myButton5.remove();
+                                            myText5.remove();
+                                            myTextField5.remove();
+                                            const myText55 = document.createElement('p');
+                                            const textNode = document.createTextNode(`Спасибо за игру, ` + fieldValue);
+                                            myText55.appendChild(textNode);
+                                            myText55.className = 'types-2';
+                                            myDiv.appendChild(myText55);
+                                            const myButton55 = document.createElement('button');
+                                            myButton55.textContent = 'ᛃ Выход ᛃ';
+                                            myButton55.className = 'btn_3';
+
+                                            function m() {
+                                                window.close();
+                                            }
+                                            myButton55.addEventListener('click', m);
+                                            myDiv.appendChild(myButton55);
+                                            break;
+                                        default:
+                                            KL();
+
+                                    }
+                                }
+                                myButton5.addEventListener('click', KL);
+                                myDiv.appendChild(myText5);
+                                myDiv.appendChild(myTextField5);
+                                myDiv.appendChild(myButton5);
+                                myButton2.remove();
+                                myText2.remove();
+                            } else {
+                                const myText7 = document.createElement('p');
+                                const textNode = document.createTextNode(`Поздравляем, вы победили! Вы достигли максимального уровня. Спасибо за игру, ` + fieldValue + `!`);
+                                myText7.appendChild(textNode);
+                                myText7.className = 'types-2';
+                                myDiv.appendChild(myText7);
+                                const myButton26 = document.createElement('button');
+                                myButton26.textContent = 'ᛃ Выход ᛃ';
+                                myButton26.className = 'btn_3';
+
+                                function y() {
+                                    window.close();
+                                }
+                                myButton26.addEventListener('click', y);
+                                myDiv.appendChild(myButton26);
+                                myButton2.remove();
+                                myText2.remove();
+                            }
+                        }
+                    }
+                    myButton25.addEventListener('click', j);
+                    myDiv.appendChild(myText25);
+                    myDiv.appendChild(myButton25);
+                }
+            }
+            myButton2.addEventListener('click', r);
+            myButton2.textContent = 'ᛃ Продолжить ᛃ';
+            myButton2.className = 'btn-2';
+            myText2.appendChild(textNode);
+            myDiv.appendChild(myText2);
+            myDiv.appendChild(myButton2);
+            myButton1.remove();
+            myText1.remove();
+        }
+        myButton1.addEventListener('click', Select);
+        myText1.appendChild(textNode);
+        myDiv.appendChild(myText1);
+        myDiv.appendChild(myButton1);
+        myButton.remove();
+        myTextField.remove();
+        myText.remove();
+    }
+
+    function getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+}
+// Находим кнопку
+const myButton = document.getElementById('my-button');
+
+// Добавляем обработчик события click
+myButton.addEventListener('click', createButtonAndTextField);
+myButton.addEventListener('click', function() {
+    // Удаляем кнопку
+    myButton.remove();
+});
+
+</script>

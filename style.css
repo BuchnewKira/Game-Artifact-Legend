@@ -1,0 +1,186 @@
+@font-face {
+	font-family: 'Inkulinati-Regular'; 
+	src: url(Inkulinati-Regular.otf); 
+}
+body{
+background-image: url("fon.jpg");
+background-size: 100% auto;
+}
+#my-button{
+border: none; 
+outline: none;
+background-color: rgba(0, 0, 0, 0.00001);
+cursor: pointer;
+color: white;
+text-transform: uppercase;
+font-family: Inkulinati-Regular;
+font-size: 3vw;
+margin-top: 12vw;
+text-shadow: 0.5vw 0.5vw 1vw black;
+margin-left: 17vw;
+}
+#my-div{
+background-color: rgba(0, 0, 0, 0.7);
+color: white;
+font-family: Inkulinati-Regular;
+font-size: 3vw;
+text-shadow: 0.5vw 0.5vw 1vw black;
+width: 60vw;
+height: 40vw;
+margin-left: 20vw;
+text-align: justify;
+margin-top: 4vw;
+overflow-y: scroll;
+}
+::-webkit-scrollbar-button {
+background-image:url('');
+background-repeat:no-repeat;
+width:5px;
+height:0px
+}
+::-webkit-scrollbar-track {
+background-color: rgba(0, 0, 0, 0.0000001);
+}
+::-webkit-scrollbar-thumb {
+-webkit-border-radius: 0px;
+background-color: rgba(60, 60, 60, 1);
+}
+::-webkit-resizer{
+background-repeat:no-repeat;
+width:4px;
+height:0px
+}
+::-webkit-scrollbar{
+width: 10px;
+}
+.container1{
+    margin-left: 15vw;
+    margin-top: -3vw;
+    position: fixed;
+    width: 12vw;
+    height: auto;
+}
+.container1 img {
+    width: 100%;
+    height: 100%;
+}
+.type{
+    position: absolute;
+    margin-top: 3vw;
+    font-size: 2.9vw;
+    margin-left: 4vw;
+}
+.types{
+    font-size: 2vw;
+    margin-top: 3vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+.types-2{
+    font-size: 2.9vw;
+    margin-top: 3vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+.btn{
+position: absolute;
+border: none; 
+outline: none;
+background-color: rgba(0, 0, 0, 0.00001);
+cursor: pointer;
+color: white;
+text-transform: uppercase;
+font-family: Inkulinati-Regular;
+font-size: 3vw;
+text-shadow: 0.5vw 0.5vw 1vw black;
+top: 38vw;
+margin-left: 18vw;
+}
+.btn_1{
+position: relative;
+border: none; 
+outline: none;
+background-color: rgba(0, 0, 0, 0.00001);
+cursor: pointer;
+color: white;
+text-transform: uppercase;
+font-family: Inkulinati-Regular;
+font-size: 3vw;
+text-shadow: 0.5vw 0.5vw 1vw black;
+margin-left: 18vw;
+margin-bottom: 1vw;
+}
+.btn-2{
+position: relative;
+border: none; 
+outline: none;
+background-color: rgba(0, 0, 0, 0.00001);
+cursor: pointer;
+color: white;
+text-transform: uppercase;
+font-family: Inkulinati-Regular;
+font-size: 3vw;
+text-shadow: 0.5vw 0.5vw 1vw black;
+margin-left: 18vw;
+margin-top: 15vw;
+}
+#my-text-field{
+ display: block;
+  width: 70%;
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-family: inherit;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 0.1vw solid #bdbdbd;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;  
+ margin-top: 15vw;
+ margin-left: 10vw;
+}
+#choice{
+ display: block;
+  width: 70%;
+  height: calc(2.25rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-family: inherit;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 0.1vw solid #bdbdbd;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;  
+ margin-top: 5vw;
+ margin-left: 10vw;
+}
+.btn_3{
+position: absolute;
+border: none; 
+outline: none;
+background-color: rgba(0, 0, 0, 0.00001);
+cursor: pointer;
+color: white;
+text-transform: uppercase;
+font-family: Inkulinati-Regular;
+font-size: 3vw;
+text-shadow: 0.5vw 0.5vw 1vw black;
+top: 38vw;
+margin-left: 22vw;
+}
+.ornament{
+position: relative;
+color: #ffd700;
+text-transform: uppercase;
+font-family: Inkulinati-Regular;
+font-size: 4vw;
+text-align: center;
+margin-top: 1.5vw;
+}
+
